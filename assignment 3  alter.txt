@@ -1,0 +1,14 @@
+Q1) Write a SQL statement to rename the table countries to country_new.
+-> alter table countries rename to country_new;
+
+Q2) Write a SQL statement to add a column region_id to the table locations.
+-> alter table locations add region_id int unique;
+
+Q3) Write a SQL statement to change the data type of the column region_id to text in the table locations.
+-> alter table locations alter column region_id text;
+
+Q4) Write a SQL statement to drop the column city from the table locations.
+-> alter table locations drop column city;
+
+Q5) Write a SQL statement to add a primary key for the columns location_id in the locations table.
+-> alter table locations add primary key (location_id); 
