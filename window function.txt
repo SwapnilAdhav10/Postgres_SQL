@@ -1,0 +1,32 @@
+################################Window Function###################################
+
+####over()
+table hello.emply;
+select max(salary) "max sal" from hello.emply;
+select job_id,max(salary) as "max sal" from hello.emply 
+select *,max(salary) over() "max sal" from hello.emply
+select *,max(salary) over(partition by job_id) "max sal" from hello.emply 
+
+
+####row_number()
+select *,row_number() over() as "rn" from hello.emply ;
+select *,row_number() over(partition by job_id) as "rn" from hello.emply ;
+
+Q)fetch 1st 2 employee from each job_id to join the company
+-->select * from (select *,row_number() over(partition by job_id order by employee_id) as rn from hello.emply) x where x.rn<=2;
+
+####rank()
+Q) to find out top 3 employees in each department earning the max salary
+-->select * from(
+select *,rank() over(partition by job_id order by salary desc) as rnk from hello.emply)x
+where x.rnk<2;
+
+
+#########dense_rank()
+similer to rank but will not skip any value
+
+#########lag
+Q)fetch a query to display if the salary of an employee is higher, lower or equal to the previous employee.
+
+
+ 
